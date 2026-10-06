@@ -1,0 +1,809 @@
+You are an expert full-stack developer, AI engineer, UI/UX designer, database engineer, and beginner-friendly coding mentor.
+
+I am a first-year B.Tech student with basic programming knowledge. Build a complete, functional, beginner-friendly web application for me in Replit.
+
+PROJECT NAME:
+CivicAI
+
+PROJECT IDEA:
+Create an AI-powered civic issue reporting platform where citizens can report real-world problems such as potholes, garbage dumps, broken streetlights, water leaks, damaged roads, and similar public infrastructure issues.
+
+A citizen should be able to take/upload a photo of a problem. The application should use AI/computer vision to identify the type of problem, estimate its severity, extract or request the location, display the issue on a live map, and automatically create a structured complaint.
+
+Citizens should be able to view their complaints and track their status.
+
+Authorities should have a separate dashboard where they can view reported problems, filter them, update their status, and manage complaints.
+
+IMPORTANT:
+This is a student prototype. Prioritize a working, understandable application over unnecessarily complicated enterprise architecture.
+
+==================================================
+
+1. MAIN OBJECTIVE
+   ==================================================
+
+Build a responsive web application with two main user types:
+
+1. CITIZEN
+2. AUTHORITY/ADMIN
+
+The complete flow should be:
+
+Citizen
+→ Upload/take photo
+→ AI analyzes image
+→ Detect issue
+→ Determine severity
+→ Get/request location
+→ Generate complaint
+→ Save complaint to database
+→ Display issue on map
+→ Citizen tracks status
+
+Authority
+→ Login
+→ View dashboard
+→ View complaints
+→ See issue location and image
+→ Filter/sort complaints
+→ Update complaint status
+→ Add authority notes
+→ Citizen sees updated status
+
+==================================================
+2. TECHNOLOGY STACK
+===================
+
+Use a beginner-friendly modern stack.
+
+Frontend:
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+
+Backend:
+
+* Node.js
+* Express
+
+Database:
+
+* PostgreSQL
+
+Maps:
+
+* Leaflet + OpenStreetMap
+
+AI:
+
+* Use an image-analysis API through a secure backend endpoint.
+* Prefer an environment-variable-based API integration.
+* Do NOT expose API keys in frontend code.
+* If an AI API is unavailable, implement a clearly separated MOCK AI mode so the application can still be demonstrated.
+
+Authentication:
+
+* Email/password authentication
+* Secure password hashing
+* Role-based access
+
+Use simple architecture that a first-year student can understand.
+
+==================================================
+3. DESIGN REQUIREMENTS
+======================
+
+Create a professional civic-tech design.
+
+The application should look like a real modern startup/public-service platform rather than a basic college project.
+
+Design characteristics:
+
+* Clean
+* Modern
+* Minimal
+* Responsive
+* Mobile-friendly
+* Accessible
+* Easy to navigate
+
+Use:
+
+* Cards
+* Rounded corners
+* Clear buttons
+* Status badges
+* Icons
+* Tables
+* Maps
+* Dashboard statistics
+* Modal dialogs where useful
+
+Suggested visual theme:
+
+* Primary: blue/indigo
+* Success: green
+* Warning: orange/yellow
+* Critical: red
+* Neutral: gray
+
+Do not overuse animations.
+
+Add subtle hover effects and transitions.
+
+The application must work properly on:
+
+* Desktop
+* Tablet
+* Mobile
+
+==================================================
+4. LANDING PAGE
+===============
+
+Create an attractive landing page.
+
+Header:
+
+* CivicAI logo
+* Home
+* Report Issue
+* Live Map
+* About
+* Login
+* Register
+
+Hero section:
+
+Title:
+"Report Problems. Improve Your Community."
+
+Subtitle:
+"Use AI to report potholes, garbage, water leaks, broken streetlights and other civic problems in seconds."
+
+Buttons:
+
+* Report an Issue
+* View Live Map
+
+Add a visual section explaining:
+
+1. Capture
+   Take a photo of the civic problem.
+
+2. AI Detects
+   AI identifies the issue and estimates severity.
+
+3. Locate
+   The issue is placed on the map.
+
+4. Track
+   Citizens and authorities can track progress.
+
+Add a section:
+"Problems You Can Report"
+
+Cards:
+
+* Pothole
+* Garbage
+* Broken Streetlight
+* Water Leak
+* Damaged Road
+* Other Civic Issue
+
+Add an impact section with sample statistics:
+
+* Issues Reported
+* Issues Resolved
+* Active Complaints
+* Areas Covered
+
+These can initially use database values or demo values.
+
+==================================================
+5. CITIZEN REGISTRATION AND LOGIN
+=================================
+
+Create registration page.
+
+Fields:
+
+* Full Name
+* Email
+* Password
+* Confirm Password
+
+Default role:
+Citizen
+
+Do not allow normal users to register themselves as Authority.
+
+Login:
+
+* Email
+* Password
+
+After login:
+Citizen → Citizen Dashboard
+Authority → Authority Dashboard
+
+Implement:
+
+* Password hashing
+* Session/JWT-based authentication
+* Protected routes
+* Logout
+
+Never store plain-text passwords.
+
+==================================================
+6. CITIZEN DASHBOARD
+====================
+
+Create a dashboard for citizens.
+
+Show:
+
+Welcome message:
+"Welcome back, [Name]"
+
+Statistics:
+
+* My Reports
+* Pending
+* In Progress
+* Resolved
+
+Main buttons:
+
+* Report New Issue
+* View Live Map
+
+Show "My Recent Reports".
+
+Each complaint card/table should show:
+
+* Complaint ID
+* Issue type
+* Severity
+* Location
+* Date reported
+* Status
+* Image thumbnail
+* View Details button
+
+Statuses:
+
+* Submitted
+* Under Review
+* Assigned
+* In Progress
+* Resolved
+* Rejected
+
+Use appropriate status badges.
+
+==================================================
+7. REPORT ISSUE PAGE
+====================
+
+This is the most important feature.
+
+Create a simple multi-step reporting process.
+
+STEP 1 — Upload Image
+
+Allow:
+
+* Drag and drop
+* File selection
+* Mobile camera upload where supported
+
+Accept:
+
+* JPG
+* JPEG
+* PNG
+* WEBP
+
+Show image preview.
+
+Add:
+"Analyze with AI"
+
+STEP 2 — AI ANALYSIS
+
+After uploading the image, send it to the backend AI endpoint.
+
+AI should attempt to identify:
+
+Issue type:
+
+* Pothole
+* Garbage
+* Broken Streetlight
+* Water Leak
+* Damaged Road
+* Drainage Problem
+* Fallen Tree
+* Other
+
+AI should estimate:
+
+* Severity: Low / Medium / High / Critical
+* Confidence score
+* Short description
+
+Example AI result:
+
+Issue:
+Pothole
+
+Severity:
+High
+
+Confidence:
+92%
+
+Description:
+"Large pothole visible on the road surface that may create a safety risk for vehicles."
+
+IMPORTANT:
+Do not pretend AI is 100% accurate.
+
+Display:
+"AI-generated analysis. Please verify before submitting."
+
+Allow the citizen to edit/correct:
+
+* Issue type
+* Severity
+* Description
+
+This correction is important because AI can make mistakes.
+
+==================================================
+8. LOCATION
+===========
+
+The application should support location.
+
+Provide two options:
+
+1. "Use My Current Location"
+2. "Choose Location on Map"
+
+Use browser Geolocation API when the citizen gives permission.
+
+Do not assume location access will always work.
+
+If location permission is denied:
+
+* Show a clear message.
+* Allow manual map selection.
+
+Show:
+
+* Latitude
+* Longitude
+* Human-readable location if possible
+
+Allow the user to move the marker on the map.
+
+IMPORTANT PRIVACY:
+Only collect location when necessary for the complaint.
+Explain that location is used to place the civic issue on the map.
+
+==================================================
+9. COMPLAINT GENERATION
+=======================
+
+After AI analysis and location selection, generate a structured complaint.
+
+Example:
+
+Complaint ID:
+CIV-2026-000123
+
+Issue:
+Pothole
+
+Severity:
+High
+
+Description:
+Large pothole detected on the road.
+
+Location:
+[Human-readable location]
+
+Coordinates:
+Latitude: ...
+Longitude: ...
+
+Reported By:
+Citizen name
+
+Reported At:
+Date/time
+
+Status:
+Submitted
+
+Image:
+Uploaded image
+
+Create a final confirmation screen.
+
+Button:
+"Submit Complaint"
+
+After submission:
+Show success message:
+
+"Your civic issue has been reported successfully."
+
+Show:
+Complaint ID
+
+Provide:
+"Track Complaint"
+
+==================================================
+10. DATABASE DESIGN
+===================
+
+Create PostgreSQL database tables.
+
+Users table:
+
+* id
+* name
+* email
+* password_hash
+* role
+* created_at
+
+Complaints table:
+
+* id
+* complaint_number
+* user_id
+* issue_type
+* severity
+* confidence
+* description
+* latitude
+* longitude
+* address
+* image_url/path
+* status
+* authority_notes
+* created_at
+* updated_at
+
+Complaint status history table:
+
+* id
+* complaint_id
+* old_status
+* new_status
+* changed_by
+* note
+* created_at
+
+This allows the application to display a timeline.
+
+Use proper foreign keys.
+
+==================================================
+11. LIVE MAP
+============
+
+Create a dedicated Live Map page.
+
+Use:
+Leaflet + OpenStreetMap.
+
+Show complaint markers.
+
+Marker color/icon should represent severity.
+
+Example:
+Low → green
+Medium → yellow
+High → orange
+Critical → red
+
+Clicking a marker should display:
+
+Issue Type
+Severity
+Status
+Reported Date
+Short Description
+Complaint ID
+
+Add filters:
+
+Issue Type:
+
+* All
+* Pothole
+* Garbage
+* Streetlight
+* Water Leak
+* Damaged Road
+* Other
+
+Severity:
+
+* All
+* Low
+* Medium
+* High
+* Critical
+
+Status:
+
+* All
+* Submitted
+* Under Review
+* Assigned
+* In Progress
+* Resolved
+
+The map should update based on filters.
+
+Do not expose unnecessary personal information about the reporter.
+
+==================================================
+12. COMPLAINT DETAILS PAGE
+==========================
+
+Create a detailed complaint page.
+
+Show:
+
+Complaint ID
+Issue Type
+Severity
+AI Confidence
+Image
+Description
+Location
+Map
+Date Reported
+Current Status
+
+Add a visual status timeline:
+
+Submitted
+↓
+Under Review
+↓
+Assigned
+↓
+In Progress
+↓
+Resolved
+
+Highlight the current stage.
+
+Show status history below.
+
+If the complaint belongs to the logged-in citizen:
+Allow them to view it.
+
+Do not allow citizens to change official status.
+
+==================================================
+13. AUTHORITY DASHBOARD
+=======================
+
+Create a separate professional dashboard for authorities.
+
+Dashboard statistics:
+
+Total Complaints
+Pending Complaints
+High Priority
+In Progress
+Resolved
+
+Create a complaint management table.
+
+Columns:
+
+* Complaint ID
+* Issue
+* Severity
+* Location
+* Date
+* Status
+* Action
+
+Features:
+
+* Search
+* Filter
+* Sort
+* Pagination
+
+Clicking a complaint opens details.
+
+Authority can:
+
+* Review complaint
+* View image
+* View map location
+* Update status
+* Add notes
+
+Status options:
+
+* Submitted
+* Under Review
+* Assigned
+* In Progress
+* Resolved
+* Rejected
+
+Every status change should create an entry in status history.
+
+==================================================
+14. AUTHORITY MAP
+=================
+
+Authority dashboard should include a map view.
+
+Show all complaints.
+
+Allow filtering by:
+
+* Severity
+* Issue type
+* Status
+* Date
+
+Authorities should be able to quickly identify high-priority areas.
+
+==================================================
+15. PRIORITY SYSTEM
+===================
+
+Create a simple priority score.
+
+Do NOT make this unnecessarily complicated.
+
+Example logic:
+
+Critical = 4
+High = 3
+Medium = 2
+Low = 1
+
+AI confidence can be displayed separately.
+
+The authority dashboard should sort high-severity issues near the top.
+
+Clearly label this as a prototype prioritization system.
+
+==================================================
+16. AI ARCHITECTURE
+===================
+
+Create a backend endpoint:
+
+POST /api/ai/analyze
+
+Input:
+Image
+
+Output JSON:
+
+{
+"issueType": "pothole",
+"severity": "high",
+"confidence": 0.92,
+"description": "Large pothole visible on road surface"
+}
+
+AI API credentials must be stored in environment variables.
+
+Example:
+
+AI_API_KEY=...
+
+Never hardcode secrets.
+
+Create an AI service module so the AI provider can easily be replaced later.
+
+IMPORTANT:
+If no AI API key is configured, automatically switch to DEMO/MOCK MODE.
+
+Mock mode should return realistic sample results based on the uploaded image workflow.
+
+Display a small developer/demo indicator when mock mode is active.
+
+==================================================
+17. FILE UPLOAD
+===============
+
+Implement secure image uploading.
+
+Validate:
+
+* File type
+* File size
+* Filename
+
+Do not allow executable files.
+
+Use safe file naming.
+
+For the student prototype, local storage can be used during development.
+
+Structure code so cloud storage can be added later.
+
+==================================================
+18. API STRUCTURE
+=================
+
+Create clean backend APIs.
+
+Suggested endpoints:
+
+POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/logout
+GET /api/auth/me
+
+POST /api/ai/analyze
+
+POST /api/complaints
+GET /api/complaints
+GET /api/complaints/:id
+PUT /api/complaints/:id
+
+GET /api/complaints/my
+
+GET /api/map/complaints
+
+GET /api/complaints/:id/history
+
+Use authentication middleware.
+
+Use authorization middleware.
+
+Example:
+Citizen can:
+
+* Create complaint
+* View own complaints
+* View public map information
+
+Authority can:
+
+* View complaints
+* Update complaints
+* Add notes
+* Change status
+
+==================================================
+19. SECURITY
+============
+
+Implement basic security practices.
+
+* Hash passwords
+* Validate inputs
+* Sanitize inputs
+* Protect API routes
+* Use environment variables
+* Never expose API keys
+* Validate uploads
+* Prevent unauthorize

@@ -1,0 +1,129 @@
+.report-map-shell {
+  height: 250px;
+  border-color: #d9d7ca;
+  background: #e9eee3;
+}
+
+.report-leaflet-map {
+  width: 100%;
+  height: 100%;
+}
+
+.report-map-shell .locate-button {
+  z-index: 1100;
+}
+
+.leaflet-public-shell {
+  position: relative;
+  min-width: 0;
+  min-height: 510px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.public-leaflet-map {
+  width: 100%;
+  height: 510px;
+  background: #e7e9df;
+}
+
+.leaflet-report-popup {
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  color: #30463a;
+  font-family: var(--app-font-sans);
+}
+
+.leaflet-report-popup small {
+  color: #898778;
+  font: 9px var(--app-font-mono);
+}
+
+.leaflet-report-popup strong {
+  color: #294738;
+  font-size: 13px;
+}
+
+.leaflet-report-popup > span {
+  color: #72796f;
+  font-size: 11px;
+}
+
+.leaflet-report-popup .status-pill {
+  margin: 2px 0;
+}
+
+.leaflet-report-popup a {
+  color: #46674d;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.leaflet-empty,
+.leaflet-error {
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.leaflet-error {
+  width: min(90%, 390px);
+}
+
+.leaflet-empty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid #dedacc;
+  border-radius: 5px;
+  background: #fffdf4;
+  color: #67736a;
+  font-size: 10px;
+  box-shadow: 0 8px 22px #243a2b18;
+}
+
+.leaflet-empty button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #46674d;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.leaflet-container {
+  font-family: var(--app-font-sans);
+}
+
+@media (max-width: 900px) {
+  .leaflet-public-shell {
+    min-height: 420px;
+  }
+
+  .public-leaflet-map {
+    height: 420px;
+  }
+}
+
+@media (max-width: 680px) {
+  .report-map-shell {
+    height: 220px;
+  }
+
+  .leaflet-public-shell {
+    min-height: 350px;
+  }
+
+  .public-leaflet-map {
+    height: 350px;
+  }
+}
